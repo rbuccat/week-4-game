@@ -1,0 +1,35 @@
+.swImage {
+	width: 200px;
+	height: 100px;
+	float: left;
+	padding: 2px;
+	margin-left: -7px;
+	margin-top: -7px;	
+}
+
+#mycharacter{
+		margin-top: 100px;
+	}
+
+#mycharacter p {
+	margin-bottom: 20px;
+}
+
+#enemies {
+
+}
+
+#enemies p {
+	padding-top: 100px;
+}
+
+#fightsection {
+
+}
+
+#defender {
+	margin-top: 100px;
+}
+#buttons {
+	padding-top: 20px;		
+}

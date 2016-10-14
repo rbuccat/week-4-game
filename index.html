@@ -16,6 +16,7 @@
 </div>
 <div id=fightsection>
 	<p>Fight Section</p>
+		<button>Attack</button>
 </div>
 <div id=defender>
 	<p>Defender</p>
@@ -39,6 +40,9 @@
 
 			$('button').on(
 				'click', function() {
+					$('button').on('click', function() {
+						$("#defender").append(($(this)));
+					})
 					$("#mycharacter").append(($(this)));
 					$("#enemies").append($("#buttons"));
 				});

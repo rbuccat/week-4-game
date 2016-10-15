@@ -3,32 +3,42 @@ body {
 }
 
 .swImage {
+	width: 250px;
+	height: 150px;
+	float: left;
+	border: 2px solid green;
+	background: #fff;
+}
+
+.swImage img {
 	width: 200px;
 	height: 100px;
-	float: left;
-	padding: 2px;
-	margin-left: -7px;
-	margin-top: -7px;	
 }
 
 #mycharacter{
-		margin-top: 100px;
+		margin-top: 150px;
+		padding-bottom: 170px;
 	}
 
 #mycharacter p {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 #enemies {
-
+	padding-bottom: 10px;
 }
 
 #enemies p {
-	padding-top: 100px;
+
+}
+
+#enemies #buttons .swImage {
+	background: red;
+	border: 2px solid #000;
 }
 
 #fightsection {
-	padding-top: 100px;
+	padding-top: 150px;
 }
 
 #fightsection button {
@@ -40,8 +50,14 @@ body {
 }
 
 #defender p {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
+
+#defender .swImage {
+	background: #000;
+	color: #fff;
+}
+
 #buttons {
 	padding-top: 20px;		
 }

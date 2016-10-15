@@ -16,7 +16,7 @@
 </div>
 <div id=fightsection>
 	<p>Fight Section</p>
-		<button>Attack</button>
+		<button id="attack">Attack</button>
 </div>
 <div id=defender>
 	<p>Defender</p>
@@ -28,24 +28,45 @@
 	$(document).ready(
 		function() {
 
-			var test = ["assets/images/obiwan.jpg", "assets/images/lukeskywalker.jpg", "assets/images/darthsidious.PNG", "assets/images/darthmaul.jpeg"];
+			var test = ["assets/images/rey.jpg", "assets/images/lukeskywalker.jpg", "assets/images/darthvader.jpg", "assets/images/kyloren.jpg"];
+
+			var health = [100, 120, 150, 180]
+
+			var chooseFrom = ["Rey", "Luke Skywalker", "Darth Vader", "Kylo Ren"]
 			
+			var baseAP = Math.floor((Math.random() * 10));
 			
 			for (var i = 0; i < test.length; i++) {
-				var b = $('<button>').prepend('<img class="swImage" src="' +test[i] + '" />');
+				var b = $('<button>').prepend('<img src="' +test[i] + '" />');
 				b.addClass('swImage-button swImage');
 				$("#buttons").append(b);
+				b.data('num', health[i]);
+
+				var c = $('<p>').prepend(health[i]);
+				c.addClass('fullHealth');
+				b.append(c);
+
+				//b.append('<p>' + health[i] + '</p>');
+				b.prepend('<p>' + chooseFrom[i] + '</p>');
 			}
 
 
-			$('button').on(
+			$('.swImage-button').on(
 				'click', function() {
-					$('button').on('click', function() {
+					$('.swImage-button').on('click', function() {
 						$("#defender").append(($(this)));
+						$(this).find(".fullHealth").addClass("updatehp2");
+						$(this).find(".fullHealth").removeClass("updatehp1");
 					})
 					$("#mycharacter").append(($(this)));
 					$("#enemies").append($("#buttons"));
+					$(this).find(".fullHealth").addClass("updatehp1");
 				});
+
+			$("#attack").on('click', function() {
+					$(".updatehp1").text(75);
+					$(".updatehp2").text(50);
+			})
 
 
 

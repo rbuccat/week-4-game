@@ -64,7 +64,7 @@
 
 			var numIndex = 1;
 			var attackMore = attacks[0];
-			function nextElement() {
+			function nextAttack() {
     			attackMore = attacks[numIndex];
     			numIndex = (numIndex + 1) % (attacks.length);
 			};
@@ -105,7 +105,7 @@
 								$("#attack").on('click', function() {
 									defenderHealth = defenderHealth - attackMore;
 									console.log("defender got hit with " + attackMore + " damage. Defenderhealth is now " + defenderHealth);
-									nextElement();
+									nextAttack();
 									
 									console.log("next attack on defender is " + attackMore);
 									playerHealth = playerHealth - counterAttack;

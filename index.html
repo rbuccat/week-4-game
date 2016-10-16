@@ -31,22 +31,39 @@
 	$(document).ready(
 		function() {
 
-			var test = ["assets/images/rey.jpg", "assets/images/lukeskywalker.jpg", "assets/images/darthvader.jpg", "assets/images/kyloren.jpg"];
+			var images = ["assets/images/rey.jpg", "assets/images/lukeskywalker.jpg", "assets/images/darthvader.jpg", "assets/images/kyloren.jpg"];
 
 			var health = [100, 120, 150, 180]
 
 			var chooseFrom = ["Rey", "Luke Skywalker", "Darth Vader", "Kylo Ren"]
 			
-			var baseAP = Math.floor((Math.random() * 10));
+			var random = Math.floor((Math.random() * 10));
+
+			var baseAP = 0;
+
+			var attacks = [];
 
 			var counterAttack = Math.floor((Math.random() * 50) + 1);
 
 			var youLost = "You have been defeated...GAME OVER!";
-
-
 			
-			for (var i = 0; i < test.length; i++) {
-				var b = $('<button>').prepend('<img src="' +test[i] + '" />');
+			for(var i = 0; i < 10; i++) {
+				baseAP = baseAP + random; 
+				attacks.push(baseAP);
+			}
+
+			var myIndex = 1;
+
+			var attackMore = attacks[0]; 
+
+			function nextElement() {
+    
+    			attackMore = attacks[myIndex];
+    			myIndex = (myIndex + 1) % (attacks.length);
+			};
+			
+			for (var i = 0; i < images.length; i++) {
+				var b = $('<button>').prepend('<img src="' + images[i] + '" />');
 				b.addClass('swImage-button swImage');
 				$("#buttons").append(b);
 				b.data('num', health[i]);
@@ -62,21 +79,27 @@
 
 			$('.swImage-button').on(
 				'click', function() {
+
 					$("#mycharacter").append(($(this)));
 					$("#enemies").append($("#buttons"));
 					$(this).find(".fullHealth").addClass("updatehp1");
 					var playerHealth = $(this).data('num');
 						
 						$('.swImage-button').on('click', function() {
+							
 							$("#defender").append(($(this)));
 							$(this).find(".fullHealth").addClass("updatehp2 youchoose");
 							$(this).find(".fullHealth").removeClass("updatehp1");
-							var defenderHealth = $(this).data('num');
+								var defenderHealth = $(this).data('num');
 
 								$("#attack").on('click', function() {
-									defenderHealth = defenderHealth - baseAP;
-
-									playerHealth = playerHealth -  counterAttack;
+									defenderHealth = defenderHealth - attackMore;
+									console.log("defender got hit with " + attackMore + " damage. Defenderhealth is now " + defenderHealth);
+									nextElement();
+									
+									console.log("next attack on defender is " + attackMore);
+									playerHealth = playerHealth - counterAttack;
+									console.log("playerhealth got hit with " + counterAttack + " damage. playerhealth is " + playerHealth);
 
 									$(".updatehp1").text(playerHealth);
 									$(".updatehp2").text(defenderHealth);
@@ -89,6 +112,7 @@
 										$(".youchoose").remove();
 										$("#message").text("you won, ok");		
 									}
+								
 								})
 						});
 
@@ -102,8 +126,9 @@
 
 
 			
-		}
-	);
+		
+});
+
 </script>
 </body>
 </html>

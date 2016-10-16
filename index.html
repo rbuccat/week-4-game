@@ -7,20 +7,33 @@
 </head>
 <body>
 
-<div id="buttons"></div>
-<div id="mycharacter">
+<div id="buttons">
+	
+</div>
+<div id="character-ptag">
 	<p>Your Character</p>
 </div>
-<div id="enemies">
+<div id="mycharacter">
+
+</div>
+<div id="enemies-ptag">
 	<p>Enemies Available To Attack</p>
 </div>
+<div id="enemies">
+	
+</div>
+
 <div id=fightsection>
 	<p>Fight Section</p>
 		<button id="attack">Attack</button>
 </div>
-<div id=defender>
+<div id="defender-ptag">	
 	<p>Defender</p>
 </div>
+<div id=defender>
+	
+</div>
+
 <div id="message">
 </div>
 <button id="restart">Restart</button>
@@ -36,32 +49,27 @@
 			var health = [100, 120, 150, 180]
 
 			var chooseFrom = ["Rey", "Luke Skywalker", "Darth Vader", "Kylo Ren"]
-			
-			var random = Math.floor((Math.random() * 10));
-
-			var baseAP = 0;
-
-			var attacks = [];
-
-			var counterAttack = Math.floor((Math.random() * 50) + 1);
 
 			var youLost = "You have been defeated...GAME OVER!";
+
+			var counterAttack = Math.floor((Math.random() * 50) + 1);
 			
+			var random = Math.floor((Math.random() * 10));
+			var baseAP = 0;
+			var attacks = [];
 			for(var i = 0; i < 10; i++) {
 				baseAP = baseAP + random; 
 				attacks.push(baseAP);
 			}
 
-			var myIndex = 1;
-
-			var attackMore = attacks[0]; 
-
+			var numIndex = 1;
+			var attackMore = attacks[0];
 			function nextElement() {
-    
-    			attackMore = attacks[myIndex];
-    			myIndex = (myIndex + 1) % (attacks.length);
+    			attackMore = attacks[numIndex];
+    			numIndex = (numIndex + 1) % (attacks.length);
 			};
 			
+			function showallbuttons () {
 			for (var i = 0; i < images.length; i++) {
 				var b = $('<button>').prepend('<img src="' + images[i] + '" />');
 				b.addClass('swImage-button swImage');
@@ -74,8 +82,10 @@
 
 				//b.append('<p>' + health[i] + '</p>');
 				b.prepend('<p>' + chooseFrom[i] + '</p>');
+				}
 			}
 
+			showallbuttons();
 
 			$('.swImage-button').on(
 				'click', function() {
@@ -109,24 +119,23 @@
 									}
 
 									else if (defenderHealth <= 0) {
-										$(".youchoose").remove();
+										$("#defender").empty();
 										$("#message").text("you won, ok");		
 									}
+
+
 								
 								})
+								
 						});
 
-			
-				
-
-
-				
 			})
 
-
-
-			
-		
+			$('#restart').on(
+				'click', function() {
+					location.reload();
+				}
+			);
 });
 
 </script>

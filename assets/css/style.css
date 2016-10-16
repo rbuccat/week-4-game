@@ -16,19 +16,19 @@ body {
 }
 
 #mycharacter{
-		margin-top: 150px;
+		margin-top: 10px;
 		padding-bottom: 170px;
 	}
 
-#mycharacter p {
-	margin-bottom: 10px;
+#character-ptag p {
+	margin-top: 160px;
 }
 
 #enemies {
 	padding-bottom: 10px;
 }
 
-#enemies p {
+#enemies-ptag p {
 
 }
 
@@ -49,8 +49,9 @@ body {
 	margin-top: 10px;
 }
 
-#defender p {
+#defender-ptag p {
 	margin-bottom: 10px;
+	margin-top: 10px;
 }
 
 #defender .swImage {

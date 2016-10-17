@@ -1,4 +1,6 @@
 body {
+
+	background: url(../../assets/images/background.jpg);
 	margin-left: 10px;
 }
 
@@ -22,6 +24,7 @@ body {
 
 #character-ptag p {
 	margin-top: 160px;
+	color: #fff;
 }
 
 #enemies {
@@ -29,7 +32,7 @@ body {
 }
 
 #enemies-ptag p {
-
+	color: #fff;
 }
 
 #enemies #buttons .swImage {
@@ -39,10 +42,11 @@ body {
 
 #fightsection {
 	padding-top: 150px;
+	color: #fff;
 }
 
 #fightsection button {
-	margin-top: 2px;
+	margin-top: 10px;
 }
 
 #defender {
@@ -52,6 +56,7 @@ body {
 #defender-ptag p {
 	margin-bottom: 10px;
 	margin-top: 10px;
+	color: #fff;
 }
 
 #defender .swImage {
@@ -61,4 +66,8 @@ body {
 
 #buttons {
 	padding-top: 20px;		
+}
+
+#message {
+	color: #fff;
 }

@@ -99,32 +99,32 @@ $(document).ready(function() {
 				}
 				
 				if ($("#defender").find(".fullHealth").hasClass("100hp")) {
-							defenderHealth = 100;
-							dname = "Rey";
-							$("#dmessage").empty();
-							defenderSelected = true;
-							$("#defender").find(".fullHealth").removeClass("fullHealth");
+					defenderHealth = 100;
+					dname = "Rey";
+					$("#dmessage").empty();
+					defenderSelected = true;
+					$("#defender").find(".fullHealth").removeClass("fullHealth");
 				}
 				else if ($("#defender").find(".fullHealth").hasClass("120hp")) {
-							defenderHealth = 120;
-							dname = "Luke Skywalker";
-							$("#dmessage").empty();
-							defenderSelected = true;
-							$("#defender").find(".fullHealth").removeClass("fullHealth");
+					defenderHealth = 120;
+					dname = "Luke Skywalker";
+					$("#dmessage").empty();
+					defenderSelected = true;
+					$("#defender").find(".fullHealth").removeClass("fullHealth");
 				}
 				else if ($("#defender").find(".fullHealth").hasClass("150hp")) {
-							defenderHealth = 150;
-							dname = "Darth Vader";
-							$("#dmessage").empty();
-							defenderSelected = true;
-							$("#defender").find(".fullHealth").removeClass("fullHealth");
+					defenderHealth = 150;
+					dname = "Darth Vader";
+					$("#dmessage").empty();
+					defenderSelected = true;
+					$("#defender").find(".fullHealth").removeClass("fullHealth");
 				}
 				else if ($("#defender").find(".fullHealth").hasClass("180hp")) {
-							defenderHealth = 180;
-							dname = "Kylo Ren";
-							$("#dmessage").empty();
-							defenderSelected = true;
-							$("#defender").find(".fullHealth").removeClass("fullHealth");
+					defenderHealth = 180;
+					dname = "Kylo Ren";
+					$("#dmessage").empty();
+					defenderSelected = true;
+					$("#defender").find(".fullHealth").removeClass("fullHealth");
 				}
 				else {
 					$("#pmessage").text("No enemy here!");
@@ -142,11 +142,15 @@ $(document).ready(function() {
 
 					if (playerHealth <= 0) {
 						$("#message").text("You have been defeated...GAME OVER!")
+						$("#restart").append($('<button>').text("Restart"));
+						defenderSelected = false;
 					}
 					else if (defenderHealth <= 0 && playerWins == 2) {
 						$("#defender").empty();
 						$("#pmessage").text("You won!!!! GAME OVER!!");
+						$("#restart").append($('<button>').text("Restart"));
 						$("#dmessage").empty();
+						defenderSelected = false;
 					}
 					else if (defenderHealth <= 0) {
 						$("#defender").empty();

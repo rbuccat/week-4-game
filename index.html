@@ -34,6 +34,8 @@
 </div>
 
 <div id="message">
+	<span id="pmessage"></span>
+	<span id="dmessage"></span>
 </div>
 <button id="restart">Restart</button>
 
@@ -45,14 +47,14 @@
 
 			var images = ["assets/images/rey.jpg", "assets/images/lukeskywalker.jpg", "assets/images/darthvader.jpg", "assets/images/kyloren.jpg"];
 
-			var health = [100, 120, 150, 180]
+			var health = [100, 120, 150, 180];
 
-			var chooseFrom = ["Rey", "Luke Skywalker", "Darth Vader", "Kylo Ren"]
-
-			var youLost = "You have been defeated...GAME OVER!";
+			var chooseFrom = ["Rey", "Luke Skywalker", "Darth Vader", "Kylo Ren"];
 
 			var defenderHealth;
 			var playerHealth;
+			var name;
+			var playerWins = 0;
 
 			var counterAttack = Math.floor((Math.random() * 50) + 1);
 			
@@ -73,12 +75,12 @@
 			
 			for (var i = 0; i < images.length; i++) {
 				var b = $('<button>').prepend('<img src="' + images[i] + '" />');
-				b.addClass('swImage-button swImage');
+				b.addClass('swImage-button swImage' );
 				$("#buttons").append(b);
 				b.data('num', health[i]);
 
 				var c = $('<p>').prepend(health[i]);
-				c.addClass('fullHealth');
+				c.addClass('fullHealth '+ health[i] + 'hp');
 				b.append(c);
 
 				//b.append('<p>' + health[i] + '</p>');
@@ -92,47 +94,142 @@
 					$("#mycharacter").append(($(this)));
 					$("#enemies").append($("#buttons"));
 					$(this).find(".fullHealth").addClass("updatehp1");
-					playerHealth = $(this).data('num');
+					//playerHealth = $(this).data('num');
 					
 						$('.swImage-button').on('click', function() {
 							
 								$("#defender").append(($(this)));
 								$(this).find(".fullHealth").addClass("updatehp2 youchoose");
 								$(this).find(".fullHealth").removeClass("updatehp1");
-								defenderHealth = $(this).data('num');
-								console.log(defenderHealth)
+								$("#pmessage").empty();
+								$("#dmessage").empty();
+								//defenderHealth = $(this).data('num');
+								//console.log(defenderHealth)
 								//isEmpty = false;
 						
 
-								$("#attack").on('click', function() {
+								// $("#attack").on('click', function() {
 								
-									defenderHealth = defenderHealth - attackMore;
-									console.log("defender got hit with " + attackMore + " damage. Defenderhealth is now " + defenderHealth);
-									nextAttack();
+								// 	defenderHealth = defenderHealth - attackMore;
+								// 	console.log("defender got hit with " + attackMore + " damage. Defenderhealth is now " + defenderHealth);
+								// 	nextAttack();
 									
-									console.log("next attack on defender is " + attackMore);
-									playerHealth = playerHealth - counterAttack;
-									console.log("playerhealth got hit with " + counterAttack + " damage. playerhealth is " + playerHealth);
+								// 	console.log("next attack on defender is " + attackMore);
+								// 	playerHealth = playerHealth - counterAttack;
+								// 	console.log("playerhealth got hit with " + counterAttack + " damage. playerhealth is " + playerHealth);
 
-									$(".updatehp1").text(playerHealth);
-									$(".updatehp2").text(defenderHealth);
+								// 	$(".updatehp1").text(playerHealth);
+								// 	$(".updatehp2").text(defenderHealth);
 
-									if (playerHealth <= 0) {
-										$("#message").text(youLost)
-									}
+								// 	if (playerHealth <= 0) {
+								// 		$("#message").text(youLost)
+								// 	}
 
-									else if (defenderHealth <= 0) {
-										$("#defender").empty();
-										$("#message").text("you won, ok");
-										defenderHealth = "";
-									}
+								// 	else if (defenderHealth <= 0) {
+								// 		$("#defender").empty();
+								// 		$("#message").text("you won, ok");
+								// 		defenderHealth = "";
+								// 	}
 
 
 								
-								});
+								// });
 								
 						});
 
+			});
+
+			$("#attack").on('click', function() {
+				
+				if ($("#mycharacter").find(".fullHealth").hasClass("100hp")) {
+					playerHealth = 100;
+					pname = "Rey";
+					$("#pmessage").empty();
+					$("#mycharacter").find(".fullHealth").removeClass("fullHealth");
+					console.log(playerHealth);
+				}
+				else if ($("#mycharacter").find(".fullHealth").hasClass("120hp")) {
+					playerHealth = 120;
+					pname = "Luke Skywalker";
+					$("#pmessage").empty();
+					$("#mycharacter").find(".fullHealth").removeClass("fullHealth");
+					console.log(playerHealth);
+				}
+				else if ($("#mycharacter").find(".fullHealth").hasClass("150hp")) {
+					playerHealth = 150;
+					pname = "Darth Vader";
+					$("#pmessage").empty();
+					$("#mycharacter").find(".fullHealth").removeClass("fullHealth");
+					console.log(playerHealth);
+				}
+				else if ($("#mycharacter").find(".fullHealth").hasClass("180hp")) {
+					playerHealth = 180;
+					pname = "Kylo Ren";
+					$("#pmessage").empty();
+					$("#mycharacter").find(".fullHealth").removeClass("fullHealth");
+					console.log(playerHealth);
+				}
+				
+				if ($("#defender").find(".fullHealth").hasClass("100hp")) {
+							defenderHealth = 100;
+							dname = "Rey";
+							$("#dmessage").empty();
+							$("#defender").find(".fullHealth").removeClass("fullHealth");
+							console.log(defenderHealth);
+				}
+				else if ($("#defender").find(".fullHealth").hasClass("120hp")) {
+							defenderHealth = 120;
+							dname = "Luke Skywalker";
+							$("#dmessage").empty();
+							$("#defender").find(".fullHealth").removeClass("fullHealth");
+							console.log(defenderHealth);
+				}
+				else if ($("#defender").find(".fullHealth").hasClass("150hp")) {
+							defenderHealth = 150;
+							dname = "Darth Vader";
+							$("#dmessage").empty();
+							$("#defender").find(".fullHealth").removeClass("fullHealth");
+							console.log(defenderHealth);
+				}
+				else if ($("#defender").find(".fullHealth").hasClass("180hp")) {
+							defenderHealth = 180;
+							dname = "Kylo Ren";
+							$("#dmessage").empty();
+							$("#defender").find(".fullHealth").removeClass("fullHealth");
+							console.log(defenderHealth);
+				}
+				
+					defenderHealth = defenderHealth - attackMore;
+					//console.log("defender got hit with " + attackMore + " damage. Defenderhealth is now " + defenderHealth);
+					
+									
+					//console.log("next attack on defender is " + attackMore);
+					playerHealth = playerHealth - counterAttack;
+					$("#pmessage").text("You attacked " + dname + " for " + attackMore + " damage.");
+					$("#dmessage").text(dname + " attacked you back for " + counterAttack + " damage.");
+					//console.log("playerhealth got hit with " + counterAttack + " damage. playerhealth is " + playerHealth);
+
+					$(".updatehp1").text(playerHealth);
+					$(".updatehp2").text(defenderHealth);
+					nextAttack();
+
+					if (playerHealth <= 0) {
+						$("#message").text("You have been defeated...GAME OVER!")
+					}
+					else if (defenderHealth <= 0 && playerWins == 2) {
+						$("#defender").empty();
+						$("#pmessage").text("You won!!!! GAME OVER!!");
+						$("#dmessage").empty();
+					}
+					else if (defenderHealth <= 0) {
+						$("#defender").empty();
+						$("#pmessage").text("You have defeated " + dname + ", you can choose to fight another enemy.");
+						$("#dmessage").empty();
+						playerWins++;	
+					}
+
+
+								
 			});
 
 			$('#restart').on(

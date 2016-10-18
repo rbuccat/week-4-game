@@ -1,6 +1,17 @@
-body {
+html { 
+  background: url(../../assets/images/background.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
-	background: url(../../assets/images/background.jpg);
+@font-face {
+	font-family: 'redfive';
+	src: url('redfive_.ttf')
+}
+
+body {
 	margin-left: 10px;
 }
 
@@ -10,6 +21,8 @@ body {
 	float: left;
 	border: 2px solid green;
 	background: #fff;
+	font-family: 'redfive';
+	font-size: 20px;
 }
 
 .swImage img {
@@ -20,11 +33,12 @@ body {
 #mycharacter{
 		margin-top: 10px;
 		padding-bottom: 170px;
-	}
+}
 
 #character-ptag p {
-	margin-top: 160px;
+	clear: both;
 	color: #fff;
+	font-family: 'redfive';
 }
 
 #enemies {
@@ -33,6 +47,7 @@ body {
 
 #enemies-ptag p {
 	color: #fff;
+	font-family: 'redfive';
 }
 
 #enemies #buttons .swImage {
@@ -43,10 +58,12 @@ body {
 #fightsection {
 	padding-top: 150px;
 	color: #fff;
+	font-family: 'redfive';
 }
 
 #fightsection button {
 	margin-top: 10px;
+	font-family: 'redfive';
 }
 
 #defender {
@@ -57,6 +74,7 @@ body {
 	margin-bottom: 10px;
 	margin-top: 10px;
 	color: #fff;
+	font-family: 'redfive';
 }
 
 #defender .swImage {
@@ -71,4 +89,5 @@ body {
 #message {
 	color: #fff;
 	margin-top: 170px;
+	font-family: 'redfive';
 }

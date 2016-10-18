@@ -1,9 +1,9 @@
 $(document).ready(function() {
 
 			var starWarsCharacters = {
-				name: ["Rey", "Luke Skywalker", "Darth Vader", "Kylo Ren"],
-				hp: [100, 120, 150, 180],
-				images: ["assets/images/rey.jpg", "assets/images/lukeskywalker.jpg", "assets/images/darthvader.jpg", "assets/images/kyloren.jpg"]
+				name: ["Rey", "Luke Skywalker", "Darth Vader", "Kylo Ren", "AT-AT"],
+				hp: [100, 120, 150, 180, 300],
+				images: ["assets/images/rey.jpg", "assets/images/lukeskywalker.jpg", "assets/images/darthvader.jpg", "assets/images/kyloren.jpg","assets/images/at-at.PNG"]
 			}	
 
 			var defenderHealth;
@@ -14,7 +14,7 @@ $(document).ready(function() {
 			var playerSelected = false;
 			var defenderSelected = false;
 
-			var counterAttack = Math.floor((Math.random() * 50) + 1);
+			var counterAttack = Math.floor((Math.random() * 25));
 			
 			var random = Math.floor((Math.random() * 10));
 			var baseAP = 0;
@@ -32,65 +32,74 @@ $(document).ready(function() {
 			};
 
 			for (var i = 0; i < starWarsCharacters.hp.length; i++) {
-				var b = $('<button>').prepend('<img src="' + starWarsCharacters.images[i] + '" />');
-				b.addClass('swImage-button swImage' );
-				$("#buttons").append(b);
-				b.data('num', starWarsCharacters.hp[i]);
 
-				var c = $('<p>').prepend(starWarsCharacters.hp[i]);
-				c.addClass('fullHealth '+ starWarsCharacters.hp[i] + 'hp');
-				b.append(c);
+				var makeButton = $('<button>').prepend('<img src="' + starWarsCharacters.images[i] + '" />');
+				makeButton.addClass('player-button available swImage');
+				$("#buttons").append(makeButton);
 
-				b.prepend('<p>' + starWarsCharacters.name[i] + '</p>');
+				var makeText = $('<p>').prepend(starWarsCharacters.hp[i]);
+				makeText.addClass('fullHealth '+ starWarsCharacters.hp[i] + 'hp');
+				makeButton.append(makeText);
+
+				makeButton.prepend('<p>' + starWarsCharacters.name[i] + '</p>');
 				}
 			
 
-			$('.swImage-button').on(
+			$('.player-button').on(
 				'click', function() {
-
+				if (playerSelected === false) {
 					$("#mycharacter").append(($(this)));
 					$("#enemies").append($("#buttons"));
 					$(this).find(".fullHealth").addClass("updatehp1");
-					
-						$('.swImage-button').on('click', function() {
-							
+					$(".available").removeClass("player-button");
+					$(".available").addClass("defender-button");
+					playerSelected = true;
+				}			
+			
+					$('.defender-button').on('click', function() {
+						if (defenderSelected === false) {
+								
 							$("#defender").append(($(this)));
 							$(this).find(".fullHealth").addClass("updatehp2");
 							$(this).find(".fullHealth").removeClass("updatehp1");
 							$("#pmessage").empty();
 							$("#dmessage").empty();
-								
-						});
-
-			});
+							defenderSelected = true;
+						}
+					});
+			});			
+			
 
 			$("#attack").on('click', function() {
 				
 				if ($("#mycharacter").find(".fullHealth").hasClass("100hp")) {
-					playerHealth = 100;
-					pname = "Rey";
-					playerSelected = true;
+					playerHealth = starWarsCharacters.hp[0];
+					pname = starWarsCharacters.name[0];
 					$("#pmessage").empty();
 					$("#mycharacter").find(".fullHealth").removeClass("fullHealth");
+					console.log($("#mycharacter").find(".100hp").data("num"));
 				}
 				else if ($("#mycharacter").find(".fullHealth").hasClass("120hp")) {
-					playerHealth = 120;
-					pname = "Luke Skywalker";
-					playerSelected = true;
+					playerHealth = starWarsCharacters.hp[1];
+					pname = starWarsCharacters.name[1];
 					$("#pmessage").empty();
 					$("#mycharacter").find(".fullHealth").removeClass("fullHealth");
 				}
 				else if ($("#mycharacter").find(".fullHealth").hasClass("150hp")) {
-					playerHealth = 150;
-					pname = "Darth Vader";
-					playerSelected = true;
+					playerHealth = starWarsCharacters.hp[2];
+					pname = starWarsCharacters.name[2];
 					$("#pmessage").empty();
 					$("#mycharacter").find(".fullHealth").removeClass("fullHealth");
 				}
 				else if ($("#mycharacter").find(".fullHealth").hasClass("180hp")) {
-					playerHealth = 180;
-					pname = "Kylo Ren";
-					playerSelected = true;
+					playerHealth = starWarsCharacters.hp[3];
+					pname = starWarsCharacters.name[3];
+					$("#pmessage").empty();
+					$("#mycharacter").find(".fullHealth").removeClass("fullHealth");
+				}
+				else if ($("#mycharacter").find(".fullHealth").hasClass("300hp")) {
+					playerHealth = starWarsCharacters.hp[4];
+					pname = starWarsCharacters.name[4];
 					$("#pmessage").empty();
 					$("#mycharacter").find(".fullHealth").removeClass("fullHealth");
 				}
@@ -99,31 +108,33 @@ $(document).ready(function() {
 				}
 				
 				if ($("#defender").find(".fullHealth").hasClass("100hp")) {
-					defenderHealth = 100;
-					dname = "Rey";
+					defenderHealth = starWarsCharacters.hp[0];
+					dname = starWarsCharacters.name[0];
 					$("#dmessage").empty();
-					defenderSelected = true;
 					$("#defender").find(".fullHealth").removeClass("fullHealth");
 				}
 				else if ($("#defender").find(".fullHealth").hasClass("120hp")) {
-					defenderHealth = 120;
-					dname = "Luke Skywalker";
+					defenderHealth = starWarsCharacters.hp[1];
+					dname = starWarsCharacters.name[1];
 					$("#dmessage").empty();
-					defenderSelected = true;
 					$("#defender").find(".fullHealth").removeClass("fullHealth");
 				}
 				else if ($("#defender").find(".fullHealth").hasClass("150hp")) {
-					defenderHealth = 150;
-					dname = "Darth Vader";
+					defenderHealth = starWarsCharacters.hp[2];
+					dname = starWarsCharacters.name[2];
 					$("#dmessage").empty();
-					defenderSelected = true;
 					$("#defender").find(".fullHealth").removeClass("fullHealth");
 				}
 				else if ($("#defender").find(".fullHealth").hasClass("180hp")) {
-					defenderHealth = 180;
-					dname = "Kylo Ren";
+					defenderHealth = starWarsCharacters.hp[3];
+					dname = starWarsCharacters.name[3];
 					$("#dmessage").empty();
-					defenderSelected = true;
+					$("#defender").find(".fullHealth").removeClass("fullHealth");
+				}
+				else if ($("#defender").find(".fullHealth").hasClass("300hp")) {
+					defenderHealth = starWarsCharacters.hp[4];
+					dname = starWarsCharacters.name[4];
+					$("#dmessage").empty();
 					$("#defender").find(".fullHealth").removeClass("fullHealth");
 				}
 				else {
@@ -141,14 +152,14 @@ $(document).ready(function() {
 					nextAttack();
 
 					if (playerHealth <= 0) {
-						$("#message").text("You have been defeated...GAME OVER!")
-						$("#restart").append($('<button>').text("Restart"));
+						$("#message").text("You have been defeated...GAME OVER! ")
+						$("#message").append($('<button>').text("Restart"));
 						defenderSelected = false;
 					}
-					else if (defenderHealth <= 0 && playerWins == 2) {
+					else if (defenderHealth <= 0 && playerWins == 3) {
 						$("#defender").empty();
-						$("#pmessage").text("You won!!!! GAME OVER!!");
-						$("#restart").append($('<button>').text("Restart"));
+						$("#pmessage").text("You won!!!! GAME OVER!! ");
+						$("#message").append($('<button>').text("Restart"));
 						$("#dmessage").empty();
 						defenderSelected = false;
 					}
@@ -162,7 +173,7 @@ $(document).ready(function() {
 					}			
 			});
 
-			$('#restart').on(
+			$('#message').on(
 				'click', function() {
 					location.reload();
 				}

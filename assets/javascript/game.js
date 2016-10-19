@@ -83,7 +83,6 @@ $(document).ready(function() {
 					pname = starWarsCharacters.name[0];
 					$("#pmessage").empty();
 					$("#mycharacter").find(".fullHealth").removeClass("fullHealth");
-					console.log($("#mycharacter").find(".100hp").data("num"));
 				
 				}
 				else if ($("#mycharacter").find(".fullHealth").hasClass("120hp")) {

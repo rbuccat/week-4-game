@@ -31,6 +31,8 @@ body {
 
 #mycharacter .swImage {
 	border: 4px solid #1ac567;
+	background: #000;
+	color: #fff;
 }
 
 #mycharacter{
@@ -44,9 +46,9 @@ body {
 	font-family: 'redfive';
 }
 
-#enemies {
+/*#enemies {
 	padding-bottom: 10px;
-}
+}*/
 
 #enemies-ptag p {
 	color: #fff;
@@ -59,7 +61,7 @@ body {
 }
 
 #fightsection {
-	padding-top: 150px;
+	clear: both;
 	color: #fff;
 	font-family: 'redfive';
 }
@@ -92,7 +94,7 @@ body {
 }
 
 #buttons {
-	padding-top: 20px;		
+	padding-top: 10px;		
 }
 
 #message {

@@ -3,7 +3,7 @@ $(document).ready(function() {
 			var starWarsCharacters = {
 				name: ["Rey", "Luke Skywalker", "Darth Vader", "Kylo Ren", "AT-AT"],
 				hp: [100, 120, 150, 180, 300],
-				images: ["assets/images/rey.jpg", "assets/images/lukeskywalker.jpg", "assets/images/darthvader.jpg", "assets/images/kyloren.jpg","assets/images/at-at.PNG"]
+				images: ["assets/images/rey.jpg", "assets/images/lukeskywalker.jpg", "assets/images/darthvader.jpg", "assets/images/kyloren.jpg","assets/images/at-at.png"]
 			}	
 
 			var defenderHealth;

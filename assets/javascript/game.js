@@ -154,14 +154,12 @@ $(document).ready(function() {
 					if (playerHealth <= 0) {
 						$("#message").text("You have been defeated...GAME OVER! ")
 						$("#message").append($('<button>').text("Restart"));
-						defenderSelected = false;
 					}
 					else if (defenderHealth <= 0 && playerWins == 3) {
 						$("#defender").empty();
 						$("#pmessage").text("You won!!!! GAME OVER!! ");
 						$("#message").append($('<button>').text("Restart"));
 						$("#dmessage").empty();
-						defenderSelected = false;
 					}
 					else if (defenderHealth <= 0) {
 						$("#defender").empty();
@@ -170,7 +168,15 @@ $(document).ready(function() {
 						playerWins++;
 						defenderSelected = false;	
 					}
-					}			
+					
+					if (playerHealth < 50) {
+						$("#mycharacter .swImage").css({"background": "red"})
+						}
+					if (defenderHealth < 50) {
+						$("#defender .swImage").css({"background": "red", "color": "#000"})
+						}
+					
+				}		
 			});
 
 			$('#message').on(

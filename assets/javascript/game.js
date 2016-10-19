@@ -20,7 +20,7 @@ $(document).ready(function() {
 			var random = Math.floor((Math.random() * 10) + 1);
 			var baseAP = 0;
 			var attacks = [];
-			for(var i = 0; i < 25; i++) {
+			for(var i = 0; i < 50; i++) {
 				baseAP = baseAP + random; 
 				attacks.push(baseAP);
 			}

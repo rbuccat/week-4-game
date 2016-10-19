@@ -13,10 +13,11 @@ $(document).ready(function() {
 			var playerWins = 0;
 			var playerSelected = false;
 			var defenderSelected = false;
+			var turnOnAttackButton = false
 
-			var counterAttack = Math.floor((Math.random() * 25));
+			var counterAttack = Math.floor((Math.random() * 25) + 1);
 			
-			var random = Math.floor((Math.random() * 10));
+			var random = Math.floor((Math.random() * 10) + 1);
 			var baseAP = 0;
 			var attacks = [];
 			for(var i = 0; i < 25; i++) {
@@ -67,6 +68,7 @@ $(document).ready(function() {
 							$("#pmessage").empty();
 							$("#dmessage").empty();
 							defenderSelected = true;
+							turnOnAttackButton = true;
 						
 						}
 					});
@@ -168,7 +170,8 @@ $(document).ready(function() {
 					
 					}
 				
-						if (playerSelected == true && defenderSelected == true) {
+						if (playerSelected == true && defenderSelected == true && turnOnAttackButton == true) {
+
 							defenderHealth = defenderHealth - attackMore;
 							playerHealth = playerHealth - counterAttack;
 							$("#pmessage").text("You attacked " + dname + " for " + attackMore + " damage.");
@@ -177,25 +180,29 @@ $(document).ready(function() {
 							$(".updatehp1").text(playerHealth);
 							$(".updatehp2").text(defenderHealth);
 							nextAttack();
-						}
+						
 
 							if (playerHealth <= 0) {
 								$("#message").text("You have been defeated...GAME OVER! ")
 								$("#message").append($('<button>').text("Restart"));
+								turnOnAttackButton = false;
 							}
 							else if (defenderHealth <= 0 && playerWins == 3) {
-							$("#defender").empty();
-							$("#pmessage").text("You won!!!! GAME OVER!! ");
-							$("#message").append($('<button>').text("Restart"));
-							$("#dmessage").empty();
+								$("#defender").empty();
+								$("#pmessage").text("You won!!!! GAME OVER!! ");
+								$("#message").append($('<button>').text("Restart"));
+								$("#dmessage").empty();
+								turnOnAttackButton = false;
 							}
 							else if (defenderHealth <= 0) {
-							$("#defender").empty();
-							$("#pmessage").text("You have defeated " + dname + ", you can choose to fight another enemy.");
-							$("#dmessage").empty();
-							playerWins++;
-							defenderSelected = false;	
+								$("#defender").empty();
+								$("#pmessage").text("You have defeated " + dname + ", you can choose to fight another enemy.");
+								$("#dmessage").empty();
+								playerWins++;
+								defenderSelected = false;
+								turnOnAttackButton = false;	
 							}
+
 					
 								if (playerHealth < 50) {
 									$("#mycharacter .swImage").css({"background": "red", "color": "#000"})
@@ -203,10 +210,11 @@ $(document).ready(function() {
 								if (defenderHealth < 50) {
 									$("#defender .swImage").css({"background": "red", "color": "#000"})
 								}
+						}		
 			});
 
-										$('#message').on('click', function() {
-											location.reload();
-										}
+									$('#message').on('click', function() {
+										location.reload();
+									}
 	);
 });

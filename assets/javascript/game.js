@@ -53,6 +53,7 @@ $(document).ready(function() {
 					$("#mycharacter").append(($(this)));
 					$("#enemies").append($("#buttons"));
 					$(this).find(".fullHealth").addClass("updatehp1");
+					$(this).removeClass("defender-button available");
 					$(".available").removeClass("player-button");
 					$(".available").addClass("defender-button");
 					playerSelected = true;
